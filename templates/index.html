@@ -1,0 +1,99 @@
+<!DOCTYPE html> <!-- تعريف نوع المستند كـ HTML5 -->
+<html lang="ar" dir="rtl"> <!-- تحديد لغة الصفحة بالعربية واتجاه النص من اليمين لليسار -->
+
+<head>
+    <meta charset="UTF-8"> <!-- دعم الحروف العربية والرموز الخاصة -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- جعل الصفحة متجاوبة مع الهواتف -->
+    <title>تنبؤ مرض السكري</title> <!-- عنوان الصفحة الذي يظهر في شريط المتصفح -->
+
+    <!-- ربط ملف التنسيق CSS -->
+    <!-- url_for هي دالة من Flask لتوليد الروابط الصحيحة للملفات الموجودة في مجلد static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- استيراد خط 'Cairo' من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container"> <!-- حاوية رئيسية لتوسط المحتوى في الصفحة -->
+        <header>
+            <h1>نظام التنبؤ بمرض السكري</h1> <!-- العنوان الرئيسي -->
+            <p>باستخدام خوارزمية الانحدار اللوجيستي</p> <!-- وصف بسيط -->
+
+            <!-- عرض دقة النموذج، القيمة {{ accuracy }} تأتي من ملف app.py -->
+            <div class="accuracy-badge">دقة النموذج: <span id="model-accuracy">{{ accuracy }}</span></div>
+        </header>
+
+        <main>
+            <!-- نموذج إدخال البيانات -->
+            <form id="prediction-form">
+                <div class="form-grid"> <!-- شبكة لترتيب الحقول -->
+
+                    <!-- حقل: عدد مرات الحمل -->
+                    <div class="form-group">
+                        <label for="pregnancies">عدد مرات الحمل (Pregnancies)</label>
+                        <input type="number" id="pregnancies" name="pregnancies" required min="0" value="0">
+                    </div>
+
+                    <!-- حقل: مستوى الجلوكوز -->
+                    <div class="form-group">
+                        <label for="glucose">مستوى الجلوكوز (Glucose)</label>
+                        <input type="number" id="glucose" name="glucose" required min="0" value="120">
+                    </div>
+
+                    <!-- حقل: ضغط الدم -->
+                    <div class="form-group">
+                        <label for="bloodPressure">ضغط الدم (Blood Pressure)</label>
+                        <input type="number" id="bloodPressure" name="bloodPressure" required min="0" value="70">
+                    </div>
+
+                    <!-- حقل: سمك الجلد -->
+                    <div class="form-group">
+                        <label for="skinThickness">سمك الجلد (Skin Thickness)</label>
+                        <input type="number" id="skinThickness" name="skinThickness" required min="0" value="20">
+                    </div>
+
+                    <!-- حقل: الأنسولين -->
+                    <div class="form-group">
+                        <label for="insulin">الأنسولين (Insulin)</label>
+                        <input type="number" id="insulin" name="insulin" required min="0" value="79">
+                    </div>
+
+                    <!-- حقل: مؤشر كتلة الجسم -->
+                    <div class="form-group">
+                        <label for="bmi">مؤشر كتلة الجسم (BMI)</label>
+                        <input type="number" step="0.1" id="bmi" name="bmi" required min="0" value="25.0">
+                    </div>
+
+                    <!-- حقل: الوراثة -->
+                    <div class="form-group">
+                        <label for="diabetesPedigreeFunction">وظيفة السكري الوراثية (Pedigree)</label>
+                        <input type="number" step="0.001" id="diabetesPedigreeFunction" name="diabetesPedigreeFunction"
+                            required min="0" value="0.5">
+                    </div>
+
+                    <!-- حقل: العمر -->
+                    <div class="form-group">
+                        <label for="age">العمر (Age)</label>
+                        <input type="number" id="age" name="age" required min="0" value="30">
+                    </div>
+                </div>
+
+                <!-- زر الإرسال -->
+                <button type="submit" id="predict-btn">تنبؤ بالنتيجة</button>
+            </form>
+
+            <!-- قسم عرض النتيجة (مخفي افتراضياً class="hidden") -->
+            <div id="result-section" class="hidden">
+                <h2>النتيجة:</h2>
+                <div id="result-text"></div> <!-- هنا سيتم وضع النتيجة بواسطة JavaScript -->
+                <p>احتمالية الإصابة: <span id="probability-text"></span></p>
+            </div>
+        </main>
+    </div>
+
+    <!-- ربط ملف JavaScript للتعامل مع التفاعل وإرسال البيانات -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

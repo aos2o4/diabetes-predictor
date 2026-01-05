@@ -1,0 +1,6 @@
+flask          # إطار العمل الأساسي لبناء الموقع (The web framework)
+pandas         # مكتبة للتعامل مع البيانات والجداول (Data manipulation)
+scikit-learn   # مكتبة الذكاء الاصطناعي لتدريب النموذج (Machine Learning)
+numpy          # مكتبة للعمليات الحسابية والمصفوفات (Math operations)
+joblib         # لحفظ وتحميل النموذج المدرب (Save/Load models)
+gunicorn       # خادم ويب قوي لتشغيل الموقع عند نشره (Production Server)

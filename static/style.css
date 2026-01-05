@@ -1,0 +1,128 @@
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --success-color: #2ecc71;
+    --danger-color: #e74c3c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.accuracy-badge {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+input {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1a252f;
+}
+
+#result-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.hidden {
+    display: none;
+}
+
+.result-positive {
+    color: var(--danger-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.result-negative {
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
